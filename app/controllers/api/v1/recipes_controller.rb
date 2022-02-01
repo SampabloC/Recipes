@@ -9,7 +9,7 @@ class Api::V1::RecipesController < ApplicationController
     if recipe
       render json: recipe
     else
-      render json: recipe_erros
+      render json: recipe.errors
     end
   end
 
