@@ -37,29 +37,33 @@ class Recipe extends React.Component {
   }
 
   deleteRecipe() {
-    const {
-      match: {
-        params: { id }
-      }
-    } = this.props;
-    const url = `/api/v1/destroy/${id}`;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    let confirmation = confirm("Are you sure?");
 
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        "X-CSRF-Token": token,
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
+    if (confirmation) {
+      const {
+        match: {
+          params: { id }
         }
-        throw new Error("Network reponse was ok");
+      } = this.props;
+      const url = `/api/v1/destroy/${id}`;
+      const token = document.querySelector('meta[name="csrf-token"]').content;
+
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json"
+        }
       })
-      .then(() => this.props.history.push("/recipes"))
-      .catch(error => console.log(error.message));
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error("Network reponse was ok");
+        })
+        .then(() => this.props.history.push("/recipes"))
+        .catch(error => console.log(error.message));
+    }
   }
 
   render() {
