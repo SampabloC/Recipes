@@ -8,7 +8,8 @@ This page is able to create, view and delete recipes.
 
 
 ## Instructions
-After clone this repository you need to create the database using `rails db:create`, then run migrations with `rails db:migrate`, and finally execute the seed with `rails db:seed`
+After clone this repository you need to create the database using `rails db:create`, then run migrations with `rails db:migrate`, and finally execute the seed with `rails db:seed`, this will configurate Ruby on Rails part.
+For React run `yarn install` command to install neccesary dependencies.
 
 To run the page execute `rails server` and go to `localhost:3000`.
 
